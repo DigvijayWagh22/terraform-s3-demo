@@ -12,7 +12,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      BUCKET_NAME: akmspl-digvijay-demo-site-413
+      BUCKET_NAME: akmspl-digvijay-site-0413-v3
 
     steps:
       - name: Checkout code
@@ -32,6 +32,6 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
 
-      - name: Upload index.html to S3 with public access
+      - name: Upload index.html to S3
         run: |
-          aws s3 cp index.html s3://$BUCKET_NAME/index.html --acl public-read
+          aws s3 cp index.html s3://$BUCKET_NAME/index.html

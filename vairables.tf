@@ -1,5 +1,5 @@
 variable "bucket_name" {
-  default = "akmspl-digvijay-demo-site"  # ✅ must be globally unique
+  default = "akmspl-digvijay-demo-site-413"  # ✅ must be globally unique
 }
 
 variable "region" {

@@ -1,4 +1,4 @@
-name: Terraform S3 Deployment
+name: Terraform S3 Static Website Deployment
 
 on:
   push:
@@ -12,10 +12,10 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      BUCKET_NAME: akmspl-digvijay-demo-site
+      BUCKET_NAME: akmspl-digvijay-demo-site-413
 
     steps:
-      - name: Checkout Repo
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Terraform
@@ -32,6 +32,6 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
 
-      - name: Upload HTML to S3 with public access
+      - name: Upload index.html to S3 with public access
         run: |
           aws s3 cp index.html s3://$BUCKET_NAME/index.html --acl public-read
